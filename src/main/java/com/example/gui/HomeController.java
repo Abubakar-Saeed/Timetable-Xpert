@@ -4916,13 +4916,6 @@ public class HomeController  extends DataBaseLayer implements Initializable {
         }
     }
 
-
-
-
-
-
-
-
     public void reset_btn(){
 
         try {
