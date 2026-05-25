@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="900.0" styleClass="main-bg" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gui.SplashController">
+   <ImageView fitHeight="361.0" fitWidth="370.0" layoutX="270.0" layoutY="81.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@logo.png"/>
+   </ImageView>
+   <Label layoutX="723.0" layoutY="565.0" text="By - Abubakar Saeed" textFill="WHITE">
+      <font>
+         <Font name="System Italic" size="18.0"/>
+      </font>
+   </Label>
+</AnchorPane>

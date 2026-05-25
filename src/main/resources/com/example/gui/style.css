@@ -1,0 +1,196 @@
+
+
+#table{
+
+
+   -fx- background color: #FFFFF;
+}
+
+.home_btn{
+
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFF;
+    -fx-cursor: hand;
+}
+
+.home_btn:hover{
+
+         -fx-background-color: #4A90E2;
+                                             -fx-text-fill: white;
+                                             -fx-background-insets: 0;
+                                             -fx-padding: 10 17 10 17;
+                                           -fx-font-size: 21px;
+                                             -fx-border-radius: 5;
+                                             -fx-background-radius: 5;
+                                             -fx-cursor: hand;
+
+
+                                             -fx-background-color: #4A90E2;
+                                             -fx-background-color: linear-gradient(#4A90E2, #357EBD);
+                                             -fx-background-radius: 10, 9;
+                                             -fx-background-insets: 0, 1;
+                                             -fx-text-fill: white;
+
+
+}
+.active-btn {
+
+    -fx-background-color: #4A90E2;
+     -fx-background-radius: 10, 9;
+}
+
+.white-bg{
+
+    -fx-background-color: #fff;
+
+}
+
+.radius{
+    -fx-background-radius: 8px;
+}
+
+
+
+.progress-indicator .indeterminate .progress {
+    -fx-background-color: Black; /* Change this to your desired color */
+}
+.shadow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
+}
+
+.main-bg{
+    -fx-background-color: linear-gradient(to bottom right, #003366, #6699CC);
+}
+
+.add_btn{
+
+         -fx-text-fill: #fff;
+        -fx-background-color: linear-gradient(to bottom right, #003366, #003366);
+
+         -fx-background-radius: 8px;
+
+        -fx-cursor: hand;
+}
+.add_btn:hover{
+
+        -fx-background-color: linear-gradient(to bottom right, #4A90E2, #4A90E2);
+        -fx-text-fill: #fff;
+}
+.update_btn{
+
+    -fx-background-color: linear-gradient(to bottom right, #28A745, #28A745);
+    -fx-text-fill: #fff;
+    -fx-background-radius: 8px;
+            -fx-cursor: hand;
+}
+.update_btn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #218838, #218838);
+    -fx-text-fill: #fff;
+}
+.delete_btn{
+
+    -fx-background-color: linear-gradient(to bottom right, #FF6347,#FF6347 );
+    -fx-text-fill: #fff;
+    -fx-background-radius: 8px;
+            -fx-cursor: hand;
+}
+.delete_btn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #FF4500,#FF4500 );
+    -fx-text-fill: #fff;
+}
+.clear_btn{
+
+    -fx-background-color: linear-gradient(to bottom right, #327252,#327252 );
+    -fx-text-fill: #fff;
+    -fx-background-radius: 8px;
+            -fx-cursor: hand;
+}
+.clear_btn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #9d3485,#9d3485 );
+    -fx-text-fill: #fff;
+}
+
+.nav-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-border-color: #fff;
+    -fx-border-width: .8px;
+    -fx-text-fill: #fff;
+}
+.nav-btn:hover{
+    -fx-background-color: #0abfa4;
+    -fx-border-color: #0abfa4;
+}
+
+.table-view{
+
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #003366, #6699CC);
+    -fx-border-radius: 8px;
+}
+.table-view .column-header-background{
+
+    -fx-background-color: linear-gradient(to bottom right, #003366, #6699CC);
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+.table-view .column-header, .filter{
+
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+}
+.table-view .column-header .label{
+
+    -fx-text-fill: #fff;
+    -fx-font-size: 15px;
+
+}
+.table-view .table-column{
+
+    -fx-alignment:CENTER;
+}
+
+
+.table-cell {
+
+    -fx-font-size: 15px;
+
+}
+.table-row-cell {
+
+    -fx-cell-size: 35px;
+}
+
+.text-field {
+    -fx-font-size: 15px;
+}
+
+
+.search{
+
+        -fx-background-color: transparent;
+            -fx-border-color: linear-gradient(to bottom right, #003366, #6699CC);
+            -fx-font-size: 13px;
+             -fx-border-width: 1px;
+             -fx-padding: 0px,0px,0px,28px;
+
+
+
+
+
+}
+.search:focused{
+
+ -fx-border-width: 2px;
+}
+.combo-box .list-cell {
+
+    -fx-font-size: 15px; /* Font size for the list items */
+}
+
+.combo-box .text {
+    -fx-font-size: 15px; /* Font size for the selected item */
+}
