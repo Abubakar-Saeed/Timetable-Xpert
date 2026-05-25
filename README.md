@@ -14,6 +14,7 @@ TimetableXpert is a JavaFX-based desktop application for generating and managing
   - `Program.java`, `Teacher.java`, `Room.java`, `Lab.java`, `Semester.java`, `Session.java`, `Course.java` - domain model classes
 - **User interface:** built using JavaFX and FXML files under `src/main/resources/com/example/gui`
 - **Reports:** JasperReports templates (`.jrxml`) for printing room, lab, semester, teacher and other reports
+- **Web version repository:** https://github.com/Abubakar-Saeed/University-Timetable-Automation-GCUF
 
 ## Technologies Used
 
