@@ -4,7 +4,7 @@ TimetableXpert is a JavaFX-based desktop application for generating and managing
 
 ## Project Overview
 
-- **Name:** JFX / TimetableXpert
+- **Name:** TimetableXpert
 - **Package:** `com.example.gui`
 - **Main modules:**
   - `MainApplication.java` - JavaFX application entry point
@@ -91,6 +91,3 @@ This project includes a MySQL connector dependency. Configure your database conn
 .\\mvnw.cmd javafx:run
 ```
 
-## License
-
-No license is declared in this repository. Add a license file if you want to publish or share the project publicly.
