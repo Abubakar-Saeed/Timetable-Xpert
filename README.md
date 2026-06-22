@@ -1,4 +1,4 @@
-# TimetableXpert
+<img width="388" height="226" alt="4" src="https://github.com/user-attachments/assets/78c6a80a-a252-4fa6-ac68-9171e4f7867a" /># TimetableXpert
 
 TimetableXpert is a JavaFX-based desktop application for generating and managing academic timetables. It integrates GUI controls, reporting, PDF export, and database connectivity to help organize courses, rooms, teachers, and schedules.
 
@@ -76,6 +76,22 @@ This project includes a MySQL connector dependency. Configure your database conn
 - `src/main/resources/com/example/gui/` - FXML views, styles, and JasperReports templates
 - `pom.xml` - Maven build file with dependencies and repositories
 - `mvnw`, `mvnw.cmd` - Maven wrapper scripts
+
+
+<img width="863" height="656" alt="1" src="https://github.com/user-attachments/assets/f07f8592-1374-422d-9b2f-4f5d16639548" />
+
+<img width="1587" height="947" alt="2" src="https://github.com/user-attachments/assets/d1845461-2eb6-4fae-a038-2c02accd5da2" />
+
+<img width="1586" height="938" alt="3" src="https://github.com/user-attachments/assets/6e6db6dd-ebae-4978-a1fa-f12777ae5f30" />
+
+
+<img width="388" height="226" alt="4" src="https://github.com/user-attachments/assets/96a1ff1f-6f84-4a02-b1fc-3a55a0aa8c67" />
+
+
+
+
+
+
 
 ## Notes
 
