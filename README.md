@@ -11,8 +11,9 @@ labs, course allocation, automatic timetable generation, and Excel / PDF export.
 Grab `dist/TimetableXpert-1.0-win64.zip`, unzip it anywhere, and run
 `TimetableXpert/TimetableXpert.exe`.
 
-- No Java, no MySQL, no scripts. The app bundles its own Java runtime **and** a
-  private MariaDB engine.
+- No Java, no MySQL, no scripts. The app bundles its own Java runtime, a private
+  MariaDB engine, and the Visual C++ runtime that engine needs - nothing is
+  installed on the machine.
 - On first launch it creates `%LOCALAPPDATA%\TimetableXpert\`, starts the engine
   on a free local port, imports the full schema + stored procedures, and seeds a
   default login. This takes ~10-15 seconds the first time; later launches are

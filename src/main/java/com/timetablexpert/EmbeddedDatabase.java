@@ -87,6 +87,12 @@ public final class EmbeddedDatabase {
 
         boolean alreadyInitialised = Files.isDirectory(dataDir.resolve("mysql"));
         db = PersistentDB.create(config.build(), alreadyInitialised);
+
+        // The bundled MariaDB binaries are linked against the MS Visual C++
+        // 2015-2022 runtime. Most Windows machines already have it, but drop our
+        // own copies next to server.dll so a machine that does not still starts.
+        stageVcRuntime(engineDir.resolve("bin"));
+
         db.start();
 
         port = config.getPort();
@@ -169,6 +175,37 @@ public final class EmbeddedDatabase {
             }
         } catch (IOException ignored) {
             // no data dir yet, or cannot list - nothing to reap
+        }
+    }
+
+    /**
+     * Copy the bundled MS Visual C++ runtime DLLs in beside the freshly unpacked
+     * MariaDB binaries, so {@code server.dll} loads on a machine without the
+     * "Visual C++ 2015-2022 Redistributable" installed. No-op on non-Windows,
+     * when the DLLs are not on the classpath, or when they are already staged.
+     */
+    private static void stageVcRuntime(Path binDir) {
+        if (!System.getProperty("os.name", "").toLowerCase().contains("win")) {
+            return;
+        }
+        String[] dlls = {
+                "msvcp140.dll", "msvcp140_1.dll", "msvcp140_2.dll",
+                "vcruntime140.dll", "vcruntime140_1.dll"
+        };
+        for (String name : dlls) {
+            Path target = binDir.resolve(name);
+            if (Files.exists(target)) {
+                continue;
+            }
+            try (var in = EmbeddedDatabase.class.getResourceAsStream("/" + name)) {
+                if (in == null) {
+                    continue;               // not bundled - fall back to the OS copy
+                }
+                Files.createDirectories(binDir);
+                Files.copy(in, target);
+            } catch (IOException ignored) {
+                // best effort; the loader may still find the DLL on the system
+            }
         }
     }
 
