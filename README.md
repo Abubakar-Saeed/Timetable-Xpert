@@ -83,16 +83,28 @@ The data-entry screens, in the order the guidance walks you through them:
 
 ### Generated reports
 
-`Generate` produces a clash-free timetable; `Print` exports it four ways, as PDF
-and Excel, into a `Time Table/` folder next to the app. Click any thumbnail for
-the full-size page.
+`Generate` produces a clash-free timetable; `Print` exports it four ways
+&mdash; Department, Teacher, Room and Lab &mdash; as **PDF** and **Excel**, into
+a `Time Table/` folder next to the app. Click any thumbnail for the full-size
+page.
+
+**PDF**
 
 | | |
 |---|---|
-| ![Department wise](docs/screenshots/report-department-wise.png) | ![Teacher wise](docs/screenshots/report-teacher-wise.png) |
+| ![Department wise, PDF](docs/screenshots/report-department-wise.png) | ![Teacher wise, PDF](docs/screenshots/report-teacher-wise.png) |
 | **Department wise** &mdash; full weekly grid for one class | **Teacher wise** &mdash; one sheet per teacher |
-| ![Room wise](docs/screenshots/report-room-wise.png) | ![Lab wise](docs/screenshots/report-lab-wise.png) |
+| ![Room wise, PDF](docs/screenshots/report-room-wise.png) | ![Lab wise, PDF](docs/screenshots/report-lab-wise.png) |
 | **Room wise** &mdash; one sheet per room | **Lab wise** &mdash; one sheet per lab |
+
+**Excel** (`.xls`, opened in Excel)
+
+| | |
+|---|---|
+| ![Department wise, Excel](docs/screenshots/excel-department-wise.png) | ![Teacher wise, Excel](docs/screenshots/excel-teacher-wise.png) |
+| **Department wise** | **Teacher wise** |
+| ![Room wise, Excel](docs/screenshots/excel-room-wise.png) | ![Lab wise, Excel](docs/screenshots/excel-lab-wise.png) |
+| **Room wise** | **Lab wise** |
 
 ## Project layout
 
