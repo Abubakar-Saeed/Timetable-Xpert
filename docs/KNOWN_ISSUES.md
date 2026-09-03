@@ -66,13 +66,3 @@ Running from a console prints a few lines about SLF4J / commons-logging / Log4j2
 having no backing implementation, plus `CSS Error parsing style.css`. These come
 from third-party libraries and the app's own stylesheet and are harmless - the
 packaged `.exe` is windowed and shows none of them.
-
-### `time_table_automation_backup.sql` still in git history
-
-The old MySQL dump has been removed from the working tree and is now ignored, but
-it remains in earlier commits, which are public on GitHub. Its `admintable`
-insert contains a real e-mail address, a password hash and an absolute local
-path. The application does not use it - the sanitised, self-contained schema
-lives at `src/main/resources/db/schema.sql`. To purge it from history, rewrite
-with `git filter-repo` (or the BFG) and force-push, then rotate the exposed
-credentials.
