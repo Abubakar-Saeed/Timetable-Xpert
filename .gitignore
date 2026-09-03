@@ -36,3 +36,20 @@ build/
 
 ### Mac OS ###
 .DS_Store
+### Portable build output ###
+/dist/
+
+### Build artifacts / packaged output (code only in git) ###
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+*.exe
+*.msi
+*.zip
+
+### Database dumps (may contain real data) ###
+*_backup.sql
+time_table_automation_backup.sql
+
+### Generated timetable exports ###
+Time Table/
+/e2e/

@@ -1,105 +1,127 @@
-TimetableXpert
+# TimetableXpert
 
-TimetableXpert is a JavaFX-based desktop application for generating and managing academic timetables. It integrates GUI controls, reporting, PDF export, and database connectivity to help organize courses, rooms, teachers, and schedules.
+TimetableXpert is a JavaFX desktop application for generating and managing
+academic timetables: programs, sessions, semesters, courses, teachers, rooms and
+labs, course allocation, automatic timetable generation, and Excel / PDF export.
 
-## Project Overview
+## Two ways to run it
 
-- **Name:** TimetableXpert
-- **Package:** `com.example.gui`
-- **Main modules:**
-  - `MainApplication.java` - JavaFX application entry point
-  - `HomeController.java`, `LoginController.java`, `RegisterController.java`, `PrintController.java` - UI controllers
-  - `TimeTableGenerator.java`, `GenerateTimeTable.java`, `AllocateCourse.java` - timetable logic
-  - `DataBaseLayer.java` - database integration
-  - `Program.java`, `Teacher.java`, `Room.java`, `Lab.java`, `Semester.java`, `Session.java`, `Course.java` - domain model classes
-- **User interface:** built using JavaFX and FXML files under `src/main/resources/com/example/gui`
-- **Reports:** JasperReports templates (`.jrxml`) for printing room, lab, semester, teacher and other reports
-- **Web version repository:** https://github.com/Abubakar-Saeed/University-Timetable-Automation-GCUF
+### A. Portable app (no setup)
 
-## Technologies Used
+Grab `dist/TimetableXpert-1.0-win64.zip`, unzip it anywhere, and run
+`TimetableXpert/TimetableXpert.exe`.
 
-- Java (modular application using `module-info.java`)
-- JavaFX (controls, FXML, Web, Media, Swing integration)
-- Maven build system
-- JasperReports for report generation
-- Apache PDFBox for PDF handling
-- Apache POI for Excel/document processing
-- MySQL Connector/J for database connectivity
-- ControlsFX, FormsFX, ValidatorFX, Ikonli, BootstrapFX, Medusa, TilesFX, FXGL for enhanced UI and widgets
-- Log4j for logging
+- No Java, no MySQL, no scripts. The app bundles its own Java runtime **and** a
+  private MariaDB engine.
+- On first launch it creates `%LOCALAPPDATA%\TimetableXpert\`, starts the engine
+  on a free local port, imports the full schema + stored procedures, and seeds a
+  default login. This takes ~10-15 seconds the first time; later launches are
+  instant and keep everything you entered.
+- **Default login:** `admin` / `admin`
+- The window is resizable and scales to fit any screen size or Windows display
+  scaling (100 % / 125 % / 150 %).
 
-## Prerequisites
+### B. From a source checkout
 
-- Java JDK 17 or compatible Java 17+ runtime
-- Maven (optional, uses bundled Maven wrapper)
-- MySQL database (if using the database-backed features)
-
-## Setup and Build
-
-1. Clone or open the project in your IDE.
-2. Ensure your `JAVA_HOME` points to a Java 17 JDK.
-3. Use the Maven wrapper from the project root:
+Requires JDK 17+.
 
 ```powershell
-.\\mvnw.cmd clean package
-```
+# build the portable app image yourself
+.\build-portable.ps1
 
-4. To run the project with JavaFX support:
-
-```powershell
-.\\mvnw.cmd javafx:run
-```
-
-If you prefer a normal Maven install and have Maven on your PATH:
-
-```powershell
-mvn clean package
+# or just run it against a checkout
+mvn -DskipTests clean package
 mvn javafx:run
 ```
 
-## Running in an IDE
+`build-portable.ps1` runs Maven, `jlink`s a trimmed runtime, and `jpackage`s the
+app image into `dist/`.
 
-- Import the project as a Maven project.
-- Make sure the IDE uses JDK 17.
-- Configure the run configuration to execute the `com.example.gui.MainApplication` main class if necessary.
-- Make sure `src/main/resources` is on the classpath so FXML and report templates are accessible.
+## In-app guidance
 
-## Database Configuration
+The data-entry order matters (each step feeds the next). The app now shows it:
 
-This project includes a MySQL connector dependency. Configure your database connection details in the application code or configuration file before running the database-backed features.
+1. **Programs** → 2. **Sessions** → 3. **Semesters** → 4. **Courses** →
+5. **Teachers** → 6. **Rooms & Labs** → 7. **Allocate Courses** →
+8. **Generate** → 9. **Print**
 
-> There is also a backup SQL file named `time_table_automation_backup.sql` available in the project root.
+- A banner on every screen names the current step (Dashboard is "Step 0") and its
+  rule; **Rules** opens the full checklist for that screen.
+- A **progress rail** down the right edge shows all 10 steps as done / current /
+  pending; click one to jump there. (Hidden automatically on narrow windows.)
+- **Getting Started** (auto-shown on first run) is a live checklist that ticks
+  off each step as you complete it.
+- **About** (sidebar footer) has the developer / project details with clickable
+  GitHub and e-mail links.
+- **Generate** runs a preflight first: it lists every missing prerequisite
+  (under-allocated classes, too few rooms/labs, ...) with a jump-to-the-screen
+  button, instead of failing on the first one.
+- The generator has a hard attempt cap, so an impossible-to-place class ends with
+  a clear message instead of hanging.
 
-## Project Structure
+## Screenshots
 
-- `src/main/java/com/example/gui/` - application source code
-- `src/main/resources/com/example/gui/` - FXML views, styles, and JasperReports templates
-- `pom.xml` - Maven build file with dependencies and repositories
-- `mvnw`, `mvnw.cmd` - Maven wrapper scripts
+### Application
 
+The data-entry screens, in the order the guidance walks you through them:
 
-<img width="863" height="656" alt="1" src="https://github.com/user-attachments/assets/f07f8592-1374-422d-9b2f-4f5d16639548" />
+| | |
+|---|---|
+| ![Login](docs/screenshots/01-login.png) | ![Dashboard](docs/screenshots/02-dashboard.png) |
+| **Login** &mdash; default `admin` / `admin` | **Dashboard (Step 0)** &mdash; live counts + progress rail |
+| ![Programs](docs/screenshots/03-programs.png) | ![Sessions](docs/screenshots/04-sessions.png) |
+| **1. Programs** | **2. Sessions** |
+| ![Semesters](docs/screenshots/05-semesters.png) | ![Courses](docs/screenshots/06-courses.png) |
+| **3. Semesters** | **4. Courses** |
+| ![Teachers](docs/screenshots/07-teachers.png) | ![Rooms and Labs](docs/screenshots/08-rooms-labs.png) |
+| **5. Teachers** | **6. Rooms &amp; Labs** |
+| ![Allocate Course](docs/screenshots/09-allocate-course.png) | ![Generate](docs/screenshots/10-generate.png) |
+| **7. Allocate Courses** | **8. Generate** &mdash; produced timetable |
+| ![Print](docs/screenshots/11-print.png) | |
+| **9. Print** &mdash; inline status, no pop-ups | |
 
-<img width="1587" height="947" alt="2" src="https://github.com/user-attachments/assets/d1845461-2eb6-4fae-a038-2c02accd5da2" />
+### Generated reports
 
-<img width="1586" height="938" alt="3" src="https://github.com/user-attachments/assets/6e6db6dd-ebae-4978-a1fa-f12777ae5f30" />
+`Generate` produces a clash-free timetable; `Print` exports it four ways, as PDF
+and Excel, into a `Time Table/` folder next to the app:
 
+| | |
+|---|---|
+| ![Department wise](docs/screenshots/report-department-wise.png) | ![Teacher wise](docs/screenshots/report-teacher-wise.png) |
+| **Department wise** &mdash; full weekly grid per class | **Teacher wise** &mdash; one sheet per teacher |
+| ![Room wise](docs/screenshots/report-room-wise.png) | ![Lab wise](docs/screenshots/report-lab-wise.png) |
+| **Room wise** &mdash; one sheet per room | **Lab wise** &mdash; one sheet per lab |
 
-<img width="388" height="226" alt="4" src="https://github.com/user-attachments/assets/96a1ff1f-6f84-4a02-b1fc-3a55a0aa8c67" />
+## Project layout
 
+- `src/main/java/com/timetablexpert/` - application code
+  - `MainApplication` / `GUIStarter` - entry point
+  - `EmbeddedDatabase`, `PersistentDB` - bundled MariaDB lifecycle
+  - `DataBaseLayer`, `DataAccessException` - JDBC helper
+  - `SplashController`, `LoginController`, `RegisterController`, `HomeController`,
+    `PrintController` - UI controllers
+  - `Guidance`, `GuidanceUI`, `Stages`, `PasswordUtil` - guidance, window scaling,
+    password hashing
+  - `Program`, `Teacher`, `Room`, `Lab`, `Semester`, `Session`, `Course`,
+    `AllocateCourse`, `GenerateTimeTable` - domain models
+- `src/main/resources/com/timetablexpert/` - FXML views, CSS, images, `.jrxml`
+  report templates
+- `src/main/resources/db/schema.sql` - the self-contained schema the bundled
+  engine imports
+- `pom.xml` - Maven build (shade plugin produces `target/TimetableXpert.jar`)
+- `build-portable.ps1` - one-command portable build
+- `docs/KNOWN_ISSUES.md` - current limitations
 
+## Technologies
+
+Java 17 · JavaFX 23 · Maven · MariaDB4j (embedded MariaDB 11.4) ·
+MariaDB JDBC driver · JasperReports · Apache POI · Apache PDFBox
 
 ## Notes
 
-- The application is modular and uses `module-info.java` to declare JavaFX and other dependencies.
-- The `pom.xml` includes external repositories for JasperReports and other third-party artifacts.
-- If you update JavaFX versions, ensure the module declarations and Maven dependencies remain compatible.
-
-## Helpful Commands
-
-```powershell
-.\\mvnw.cmd clean package
-.\\mvnw.cmd test
-.\\mvnw.cmd javafx:run
-```
-
+- The timetable-generation algorithm is a randomised greedy constructor
+  implemented as a MySQL/MariaDB stored procedure. The Java side is a CRUD GUI
+  over it. Verified on single-program, multi-program and evening/replica data:
+  produces a valid timetable with no teacher/room/lab/semester clashes.
+- See `docs/KNOWN_ISSUES.md` for remaining cosmetic items.
+- Web version: https://github.com/Abubakar-Saeed/University-Timetable-Automation-GCUF
