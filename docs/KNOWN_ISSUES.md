@@ -26,7 +26,33 @@ multi-program path, and one on the evening path, tripped its
 two-program and evening-replica generation all produce a valid timetable with no
 teacher / room / lab / semester clashes.
 
+### Report header ran labels into values (was: `Semester:BSCS 1st Semester`)
+
+In the exported PDFs the page-header labels collided with their values
+(`DepartmentBSCS`, `Name:Dr Ahmed Ali`, ...) and the `Dated:` value lost its
+year.
+
+**Cause:** the four `.jrxml` templates (`Semester`, `Teacher`, `Room`, `Lab`)
+size the label `staticText` boxes for **Calibri**. When the embedded font was
+switched to the (wider) standard PDF font **Helvetica**, the trailing `": "`
+overflowed the box and was clipped, and the value fields, positioned for the
+narrower font, overlapped the label. The date box was also too narrow for
+`MMMMM dd, yyyy`.
+
+**Fix:** widened the label boxes, shifted the value fields right to leave a
+clear gap, and switched the date pattern to `dd-MMM-yyyy`. The Excel exports
+were unaffected (each value is written to its own cell).
+
 ## Open
+
+### Department-wise PDF merge can fail if the target file is open
+
+`Print` builds `Time Table/PDF/Department Wise/<program>.pdf` by merging the
+per-timetable PDFs with `PDFMergerUtility`. If a previously generated
+`<program>.pdf` is still held open (e.g. in a PDF viewer, or by a crashed prior
+run), the merge aborts with *"The process cannot access the file because it is
+being used by another process"*. The individual `<program><n>.pdf` files are
+still produced. Close the old PDF and print again.
 
 ### Guidance banner is cramped on very narrow windows
 
@@ -41,10 +67,12 @@ having no backing implementation, plus `CSS Error parsing style.css`. These come
 from third-party libraries and the app's own stylesheet and are harmless - the
 packaged `.exe` is windowed and shows none of them.
 
-### `time_table_automation_backup.sql` in the repo root
+### `time_table_automation_backup.sql` still in git history
 
-The original MySQL dump committed at the repo root contains a real e-mail
-address, a password hash and an absolute local path in its `admintable` insert.
-The application no longer uses it - the sanitised, self-contained schema lives at
-`src/main/resources/db/schema.sql`. Consider deleting the old dump (it is public
-on GitHub).
+The old MySQL dump has been removed from the working tree and is now ignored, but
+it remains in earlier commits, which are public on GitHub. Its `admintable`
+insert contains a real e-mail address, a password hash and an absolute local
+path. The application does not use it - the sanitised, self-contained schema
+lives at `src/main/resources/db/schema.sql`. To purge it from history, rewrite
+with `git filter-repo` (or the BFG) and force-push, then rotate the exposed
+credentials.
