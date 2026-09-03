@@ -77,8 +77,8 @@ The data-entry screens, in the order the guidance walks you through them:
 | **5. Teachers** | **6. Rooms &amp; Labs** |
 | ![Allocate Course](docs/screenshots/09-allocate-course.png) | ![Generate](docs/screenshots/10-generate.png) |
 | **7. Allocate Courses** | **8. Generate** &mdash; produced timetable |
-| ![Print](docs/screenshots/11-print.png) | |
-| **9. Print** &mdash; inline status, no pop-ups | |
+| ![Print](docs/screenshots/11-print.png) | ![About](docs/screenshots/about.png) |
+| **9. Print** &mdash; inline status, no pop-ups | **About** &mdash; developer / project info, clickable GitHub &amp; e-mail links |
 
 ### Generated reports
 
