@@ -83,14 +83,24 @@ The data-entry screens, in the order the guidance walks you through them:
 ### Generated reports
 
 `Generate` produces a clash-free timetable; `Print` exports it four ways, as PDF
-and Excel, into a `Time Table/` folder next to the app:
+and Excel, into a `Time Table/` folder next to the app. Each is shown full size
+below.
 
-| | |
-|---|---|
-| ![Department wise](docs/screenshots/report-department-wise.png) | ![Teacher wise](docs/screenshots/report-teacher-wise.png) |
-| **Department wise** &mdash; full weekly grid per class | **Teacher wise** &mdash; one sheet per teacher |
-| ![Room wise](docs/screenshots/report-room-wise.png) | ![Lab wise](docs/screenshots/report-lab-wise.png) |
-| **Room wise** &mdash; one sheet per room | **Lab wise** &mdash; one sheet per lab |
+**Department wise** &mdash; full weekly grid for one class
+
+![Department-wise timetable report](docs/screenshots/report-department-wise.png)
+
+**Teacher wise** &mdash; one sheet per teacher
+
+![Teacher-wise timetable report](docs/screenshots/report-teacher-wise.png)
+
+**Room wise** &mdash; one sheet per room
+
+![Room-wise timetable report](docs/screenshots/report-room-wise.png)
+
+**Lab wise** &mdash; one sheet per lab
+
+![Lab-wise timetable report](docs/screenshots/report-lab-wise.png)
 
 ## Project layout
 
