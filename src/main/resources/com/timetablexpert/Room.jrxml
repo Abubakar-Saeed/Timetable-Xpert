@@ -136,9 +136,9 @@ LIMIT 1]]>
 			<frame>
 				<reportElement x="-20" y="29" width="814" height="98" uuid="8c384550-ddc9-4fcd-8c95-0f378a4ca38c"/>
 				<staticText>
-					<reportElement x="130" y="-2" width="683" height="30" uuid="5ab02dd5-dfe2-4daa-8f31-563fc7b1d3bf"/>
+					<reportElement x="140" y="-2" width="672" height="30" uuid="5ab02dd5-dfe2-4daa-8f31-563fc7b1d3bf"/>
 					<textElement>
-						<font fontName="Calibri" size="20" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+						<font fontName="Calibri" size="15" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
 					</textElement>
 					<text><![CDATA[Institute of Arts and Sciences (Chiniot Campus) Govt College University Faisalabad]]></text>
 				</staticText>
